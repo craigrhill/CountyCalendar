@@ -1,0 +1,10 @@
+{
+  "name": "clare-scout-county-calendar",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "County events calendar for Clare Scout County",
+  "dependencies": {
+    "@netlify/blobs": "^11.0.1"
+  }
+}

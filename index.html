@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clare Scout County · Events Calendar</title>
+<meta name="description" content="County events calendar for Clare Scout County: training, county and national events for every section.">
+<meta name="theme-color" content="#1F409B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAyBAMAAAAercAnAAAAMFBMVEXE3F6xq5d9rkYknbgCv/YBufADt/AFpuBnZ1ZRQywbdbcjRZlNPSlFOikgPpkbPJwP7MHRAAADoklEQVR42n2VT2gcVRzHP2/edLeQbHYmCvUUNxV6yjoTNyqKKxuaSy4SsaE1Bw1USkUo8VQ9iL1JUCG3wkI2e/EiQkRPwlY3VC+aTWbTikTIn7YoWMjO223AJt3Z52Fm/0RI5vSY953v+77v7/v7jahx0hNYxknbCSQG4njAIwEmfZ8cj5ATWQPluXo9LXUmkL57x9G4Fek5Gi1d/QRMeI7R6lsxAsP1cM1RiLmYo9JSwdgqGGAtIr8XgfQ9FkfKWmt+DYp4qhJQBRPUZemiCWyX9J0cTYKXvFlc4QYeYMJW1gsWHZFpeXu53ZG7TZLsBbf7BYHUIGrNGXDERlpsDDVqVqNl15N+6j57ZkJY4mrWBCN1r2DMFoz31lMWg2AJm6G1NV52FGAArRFaBVp51UJpXyl8tbMGVawQoP1CaMuWbFkKjc+AAzxeIxTJUORb6+uYkwyXPwIoQoaeYjSPGG1EDPrvK+1XeleHi5wHvHM/QgWVSmWrudJf1l54gmg0OkeYgLAR9YHNTR7MeHbI8FdqF3nPjjRY0BpZiM/x79IjrSwhkjpxKWWMChUxYLdihY8ucEbN/9kc94QtrHrlol7XIhJZH3jw6umpEmPizWWmfrtb0baltxqptgahxMObK2WowLQup6+dO7uNkUyqUHCtObM/GZ8udWPW/NhIMb6R0gh1NWuCnLz5c6kn6S9+ppifcrfrqbZR3/1SQmbLbcSqOa0tNXjL9I0IYBeGMjYTzTJjWJRIlzAvlN6If/OCCn0Y3ly71tSlfUgyVs7JpyfOB7dOXbLnooJoJfYSZfDOjwV9+IhSqZ6jedv1OhVDpAjQ25b6gYV9F1ZNpP6gqrqAvackwc5P8gYfegooy9c3B4etDgBrod6+xLkbAE6+8Sy6CzCmoijx+TNLwPPvbyD8HRUVC711OQBEPxysjE/Aod3axsh0AOJ010n15JX43MjZ/jKn+uzQB2FZWirgtX+AL+Fgfn142fcfFvOireEgrFMceCwAne9Jbqu2s31GAKgqwP4cFLvRtizHedd3NEDVAUgCs12AEsvLn/pLwgPCzH97ERZ6miMInQLI/Q7wxdHuCYj9r7MOerY1Bhx2miRwAOI9vdi5pvAAeeTjiMHsGYpZ84/rcFhcvg75NkMEMHM0mYyQ+V4OU4bqvioeM2wNJMDbRaIZMAtcITbb1iBqwjph3vsJU2gfAlnJVDKe6+HipSV4biCpZKoO4uQfCon/ACKnbT7oj+swAAAAAElFTkSuQmCC">
+<style>
+/* Palette taken straight off the county badge:
+   sky #00B9F0 · deep blue #1F409B · sun #FFF100 · grass #8DC345 · dolmen #51432C · stone #B5A8A3 */
+:root{
+  --sky:#00B9F0; --deep:#1F409B; --sun:#FFF100; --grass:#8DC345; --dolmen:#51432C; --stone:#B5A8A3;
+  --bg:#F1F8FC; --surface:#FFFFFF; --surface-2:#E9F4FA; --line:#CDE2EE; --line-soft:#E3EFF6;
+  --text:#17263A; --text-soft:#4E6275; --text-faint:#7C8FA0;
+  --shadow:0 1px 2px rgba(23,38,58,.06), 0 8px 24px -12px rgba(23,38,58,.22);
+  --r:12px;
+  --training:#0B7396; --training-tint:#E0F5FD; --training-edge:#00B9F0;
+  --county:#8A6400;   --county-tint:#FEF7C9;   --county-edge:#EFC600;
+  --national:#4E7A16; --national-tint:#EDF7DE; --national-edge:#8DC345;
+  --sec-beavers:#00A9D6; --sec-cubs:#3C9A52; --sec-scouts:#1F409B;
+  --sec-ventures:#8E2B3F; --sec-rovers:#C0392B; --sec-scouters:#6B5CA5;
+  --on-accent:#FFFFFF; --accent:var(--deep);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1725; --surface:#152134; --surface-2:#1C2B41; --line:#2C3E58; --line-soft:#223349;
+    --text:#E9F1F7; --text-soft:#A9BCCC; --text-faint:#7A8DA0;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 28px -14px rgba(0,0,0,.75);
+    --training:#63D2F7; --training-tint:#0C2C3A; --training-edge:#00B9F0;
+    --county:#F5D65A;  --county-tint:#332B08;  --county-edge:#EFC600;
+    --national:#A9DC6C; --national-tint:#1C2C12; --national-edge:#8DC345;
+    --sec-beavers:#4FCBEC; --sec-cubs:#59BE72; --sec-scouts:#6E9FD4;
+    --sec-ventures:#D2687C; --sec-rovers:#E0705F; --sec-scouters:#A192DC;
+    --on-accent:#0D1725; --accent:var(--sky);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text); min-height:100vh;
+  font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3{font-family:"Archivo","Archivo Black",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:-.005em}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--training)}
+:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+
+/* ---------- shell ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 64px}
+header.top{background:var(--deep);color:#fff;border-bottom:4px solid var(--sun)}
+header.top .wrap{display:flex;align-items:center;gap:14px;padding-top:16px;padding-bottom:16px}
+.mark{width:60px;flex:0 0 60px;border-radius:7px;background:#fff;padding:3px;box-shadow:0 2px 6px rgba(0,0,0,.28);display:block}
+.mark img{width:100%;height:auto;display:block;border-radius:4px}
+.brand h1{margin:0;font-size:19px;line-height:1.12;color:#fff;text-transform:uppercase;letter-spacing:.02em;font-weight:800}
+.brand p{margin:3px 0 0;font-size:12.5px;color:var(--sun);letter-spacing:.09em;text-transform:uppercase;font-weight:600}
+.top-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+.ghost-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);color:#fff;padding:7px 13px;border-radius:8px;cursor:pointer;font-weight:600}
+.ghost-btn:hover{background:rgba(255,255,255,.2);border-color:#fff}
+
+/* ---------- controls ---------- */
+.controls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:14px;margin:18px 0}
+.ctl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.ctl-row + .ctl-row{margin-top:12px;padding-top:12px;border-top:1px solid var(--line-soft)}
+.lbl{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-faint);margin-right:2px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:1px solid var(--line);background:var(--surface-2);color:var(--text-soft);padding:6px 12px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.pill:hover{border-color:var(--sky)}
+.pill[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px;background:var(--text-faint)}
+.cat-toggle{border:1px solid var(--line);background:var(--surface-2);padding:6px 12px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;color:var(--text-soft)}
+.cat-toggle .swatch{width:11px;height:11px;border-radius:3px;flex:0 0 11px}
+.cat-toggle[aria-pressed="true"]{color:var(--text);border-color:currentColor;font-weight:600}
+.cat-toggle[aria-pressed="false"]{opacity:.45}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--surface-2)}
+.seg button{background:transparent;border:0;padding:7px 15px;cursor:pointer;color:var(--text-soft)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);font-weight:600;box-shadow:inset 0 0 0 1px var(--line)}
+.spacer{flex:1 1 auto}
+.icon-btn{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center;color:var(--text-soft)}
+.icon-btn:hover{border-color:var(--sky);color:var(--text)}
+.month-nav{display:flex;align-items:center;gap:8px}
+.month-nav h2{margin:0;font-size:20px;min-width:190px;text-align:center}
+
+/* ---------- calendar ---------- */
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.dow{display:grid;grid-template-columns:repeat(7,1fr);background:var(--surface-2);border-bottom:1px solid var(--line)}
+.dow div{padding:8px 6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);text-align:center}
+.grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cell{min-height:118px;border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:6px;display:flex;flex-direction:column;gap:4px}
+.cell:nth-child(7n){border-right:0}
+.cell.out{background:var(--surface-2);opacity:.55}
+.cell.today .daynum{background:var(--accent);color:var(--on-accent);border-radius:50%}
+.daynum{font-size:12px;font-weight:700;color:var(--text-soft);width:22px;height:22px;display:grid;place-items:center;flex:0 0 auto}
+.chip{text-align:left;width:100%;border:0;border-left:3px solid var(--text-faint);background:var(--surface-2);border-radius:5px;padding:4px 6px;font-size:11.5px;line-height:1.25;cursor:pointer;color:var(--text);display:block;overflow:hidden}
+.chip:hover{filter:brightness(.97);outline:1px solid var(--line)}
+.chip b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip small{color:var(--text-soft);font-size:10.5px}
+.chip.training{border-left-color:var(--training-edge);background:var(--training-tint)}
+.chip.county{border-left-color:var(--county-edge);background:var(--county-tint)}
+.chip.national{border-left-color:var(--national-edge);background:var(--national-tint)}
+.more{background:none;border:0;font-size:11px;color:var(--text-faint);cursor:pointer;text-align:left;padding:1px 4px}
+.more:hover{color:var(--text);text-decoration:underline}
+
+/* ---------- agenda / table ---------- */
+.agenda{display:none}
+.mgroup{margin-top:20px}
+.mgroup h3{margin:0 0 8px;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-faint)}
+.tbl{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);padding:10px 12px;background:var(--surface-2);border-bottom:1px solid var(--line);font-weight:700}
+.tbl td{padding:11px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tbody tr{cursor:pointer}
+.tbl tbody tr:hover{background:var(--surface-2)}
+.tbl .when{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.tbl .sub{color:var(--text-soft);font-size:13px}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.tag.training{color:var(--training);background:var(--training-tint)}
+.tag.county{color:var(--county);background:var(--county-tint)}
+.tag.national{color:var(--national);background:var(--national-tint)}
+.secdots{display:inline-flex;gap:3px;flex-wrap:wrap;align-items:center}
+.secdot{width:8px;height:8px;border-radius:50%}
+.seclist{font-size:12px;color:var(--text-soft)}
+.empty{text-align:center;padding:56px 20px;color:var(--text-faint);background:var(--surface);border:1px dashed var(--line);border-radius:var(--r)}
+.empty strong{display:block;font-size:17px;color:var(--text-soft);margin-bottom:6px;font-family:"Archivo",Helvetica,Arial,sans-serif}
+
+/* ---------- modal ---------- */
+.scrim{position:fixed;inset:0;background:rgba(21,25,30,.55);backdrop-filter:blur(2px);display:none;align-items:flex-start;justify-content:center;padding:24px 16px;overflow:auto;z-index:50}
+.scrim.on{display:flex}
+.modal{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);width:100%;max-width:560px;margin:auto}
+.modal.wide{max-width:900px}
+.modal header{display:flex;gap:12px;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line-soft)}
+.modal header h2{margin:0;font-size:21px;flex:1}
+.modal .body{padding:18px 20px}
+.modal footer{padding:14px 20px;border-top:1px solid var(--line-soft);display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--surface-2);border-radius:0 0 14px 14px}
+.x{background:none;border:0;font-size:22px;line-height:1;cursor:pointer;color:var(--text-faint);padding:2px 4px}
+.x:hover{color:var(--text)}
+dl.detail{margin:0;display:grid;grid-template-columns:118px 1fr;gap:10px 14px}
+dl.detail dt{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-faint);padding-top:2px}
+dl.detail dd{margin:0}
+.desc{white-space:pre-wrap}
+.btn{background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);padding:9px 16px;border-radius:9px;cursor:pointer;font-weight:600}
+.btn:hover{opacity:.9}
+.btn.sec{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn.sec:hover{border-color:var(--sky);opacity:1}
+.btn.danger{background:transparent;color:#B3402F;border-color:#E4B7AF}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* ---------- admin ---------- */
+.field{margin-bottom:13px}
+.field > label{display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px}
+.field input[type=text],.field input[type=date],.field input[type=email],.field input[type=tel],.field textarea,.field select{
+  width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--text)}
+.field textarea{min-height:88px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--sky);outline-offset:-1px;border-color:var(--sky)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px}
+.checks{display:flex;flex-wrap:wrap;gap:6px}
+.check{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface-2);padding:6px 11px;border-radius:999px;cursor:pointer;font-size:13px}
+.check input{accent-color:var(--deep);margin:0}
+.check.on{border-color:var(--text-soft);background:var(--surface);font-weight:600}
+.adminlist{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.arow{display:flex;gap:10px;align-items:center;padding:9px 11px;border-bottom:1px solid var(--line-soft)}
+.arow:last-child{border-bottom:0}
+.arow .when{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--text-soft);white-space:nowrap;min-width:104px}
+.arow .nm{flex:1;font-weight:600;font-size:13.5px}
+.arow button{background:none;border:1px solid var(--line);border-radius:7px;padding:4px 9px;font-size:12px;cursor:pointer;color:var(--text-soft)}
+.arow button:hover{border-color:var(--sky);color:var(--text)}
+.note{font-size:12.5px;color:var(--text-faint)}
+.err{color:#B3402F;font-size:13px;margin-top:8px}
+.ok{color:var(--national);font-size:13px}
+.pinbox{display:flex;gap:8px}
+.pinbox input{flex:1;letter-spacing:.4em;font-size:19px;text-align:center;padding:11px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;background:var(--deep);color:#fff;padding:11px 18px;border-radius:999px;box-shadow:var(--shadow);z-index:80;font-size:14px;opacity:0;pointer-events:none;transition:opacity .18s}
+.toast.on{opacity:1}
+footer.site{text-align:center;color:var(--text-faint);font-size:12.5px;padding:28px 16px 0}
+
+@media (max-width:560px){
+  header.top .wrap{gap:10px;padding-top:12px;padding-bottom:12px}
+  .mark{width:46px;flex:0 0 46px;border-radius:6px;padding:2px}
+  .brand{flex:1 1 auto;min-width:0}
+  .brand h1{font-size:15px;letter-spacing:.01em}
+  .brand p{font-size:9.5px;letter-spacing:.05em;margin-top:2px}
+  .top-actions{gap:6px}
+  .ghost-btn{padding:6px 9px;font-size:12.5px;white-space:nowrap}
+  .controls{padding:12px}
+  .month-nav h2{min-width:0;flex:1}
+  .modal header{padding:14px 16px}
+  .modal .body{padding:14px 16px}
+  .arow{flex-wrap:wrap;gap:7px}
+  .arow .nm{order:-1;flex:1 1 100%}
+  .arow .when{min-width:0;font-size:12px}
+  .arow .tag{margin-right:auto}
+}
+@media (max-width:820px){
+  .cal{display:none}
+  .agenda{display:block}
+  .month-nav h2{min-width:150px;font-size:18px}
+  .two,.three{grid-template-columns:1fr}
+  dl.detail{grid-template-columns:1fr;gap:3px 0}
+  dl.detail dd{margin-bottom:9px}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+  .tbl tr{border-bottom:1px solid var(--line);padding:4px 0}
+  .tbl td{border:0;padding:3px 12px}
+  .tbl td:first-child{padding-top:11px}
+  .tbl td:last-child{padding-bottom:11px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="mark"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAACcCAMAAAANmRRNAAAASFBMVEX894CnyVq1qKKFxUg0rL0BwfABu+8DufMAufACuewDt/AGruxpb11SRS1SQyxPQy0fdZ8kTHAhQ4tEOC8kPpkeQJ0cO6McPJHEoHPhAAAc/UlEQVR42u1d6XKrOrMNCZNAssDY5v3f9PZa3WLGIdnnx5eqq9rbwRikXuq5JeyP519rj/Xx/fmS1/HzY3XN32iJ1D8PZIXpEMhfEjAyZgtkwbI/A+Ox0JHxrwKZiD3myPjH5GoJ5DUDeY5/RNmfs/Q8DoD8Hau1EKwDIHgdn6/xb7SH/H+OjzMgz679Uy3vtjqSWJUX6+aKw1ZV6WB9viy+b2VV/LztxiNhrurGIyDyr62qsnBtK1e1TYmDsq7qxpXOucI1bVW7tnSlnJfrGicXNLi0beSoLUu5vSobuds1VV2D6NbJvXJpU7VN1Uir5GPpzJWloG5kEOm6YNfoAB+hv7Zq5Fg6lP4dxnNNU5SNXFVUMlYlJ1vpOAGBvd0BkWsq8q0RMnInQOTWEp23RVNVxlTpLx22Qh5g8rBoKx60ANnWjV5Q4NqqrOWQd+Xpvqax3jh1OA/UvLNib5hKDFqkwQBKiMQIZVN0DwMiGDZAGuDuqC2l/JXRCKTCqUp66ahK1CWcevIemTvcJKerVuB3s7LpoUzds5M5lv54GfoAkrpMY8n8ydFLDkscSJ9yS1vkcqIp22dXdC8bretyASK9yHy/ASL8q9rn6/V4vboCPYLLtTBXTJqQQsoe8uFLPpD7cGFXFZhFuX18dTKz7WvEFZ0wqXtxCJnQTi5zRTd2+etF6/lyRQ3ZkS6kdTL5nR61HLYS7C/chu4FToHuxe4+c5EmEU6QugYyroGUmNBRpggvTTdi3qpSRJgEFTjPiX4QSBIt3CQktABrt4NTLWaY7wGhFY6MUAX5MIdCNDzEFYJaQD/ZJ3p44TKB48gDByDpWqMAfVaTaB0oO2gGOyHilXFE2C6QOjIcEESL5LXCdbAcosMiDsKjpsq7Drxrncxqzpta8EqMYQfBrADEQZrkRkxZiz5EBbrWCWtysUm5AmsbvaobIdHSD8yU3C0C44AHU1FC/MZzICAQt4muOIBXOwZImFQCKfDqQATMDLQRsyhvYRRBCqycighMB+hIQETAnAKpqHGQHLFeDrzA3QDR2pTJaweJbvOxg43DCVFwgQz2y6j1EshzBwR6qSLjqOxiYB3F6En51RDg1ZaqIxBqMbCQLemjgzR0Mp3CI95UCDhIxgIISRT7DKPbPWhBCsoBXuWM/E+ihUl9jjmAiM3BiYp/RQrFDld1+wYIZkHkAzreUILEEBYUI6WrQ+j/EsEBnUCC2RXr35g9I8kw8pQWuQEz2RWmvwKkUWMIcywnHrgYnCSQyk1A1HaJFMBACEUNkcFRCTEjBhVIbzhScxbEG9ZCPYCIIovVFlmF0YQhQ79Cq8g+hCnPWxjsqqSrgRC1NLRlSTsk3CoqAhlzGJmxnYHIWOAIvGWhQER+aEbkvnICAh2Xz5RFQOJoe11RvQciOiKGFz65JUfEGtfoXqK0hwIRnj1eNLMdTBq1qVWFgaCLfRUWFvBh3SuX4WSCAaSDkYHwQ3fEGkBHyvbROY7Vtq+H2GsYOukfFDTQJPMgeK86UteECCBwmAurtfUjkFaaVdgTWlmYL/hAsITGj6S5ok1eryG7n2p0HdVVVAa3vzD1nVmtnMJZEaATwWhKuieCUBvc8tUMOCVZ3paQJJoEDF3R1JDp0vU7ILX62udIb/AA/SJAT0wJzQDkt8hftFpEJwQCSBI+2p8OmiSTIpzvzM3z89dT5kltnmhv8usSwsLTyPidup+cJ0dYDkK83zuIpKg9IrUC81gxKnjjRxAEtoBhJkoE6kGFEy8MXcV8u0Ln7MmsYMRsAcmLN1HrcZbRUzfyJCwTTtKlltQdUUIIZRrLQXOQoorQgKmvUT2M9C4MEwGQ6YMfUSBytq7eA4HXgIHoNO7DfOC4g4eC48KhcxZHaWudxJW0l4iqgCTHkUgONRQiZX12rQJpZVoQw6lzbzuLD/QKp2YDommukjGo2JMW3hzGTg5kWt8DgWgh2AYNznKPCukHrIx07GhrHWxaW00ZRsMEpaooueK6KtihBgCYQZSgGKdgsmTy5WOBK5axrhveWrUqChrrWhZUKwkM7MFyuxJBh4Sm6FTs1+vUs0vntRBawjxokA0K4A6qhqSr3QPWQuOsulKGyAgSqMss1I7YGvEKMo+lzE0DhSiRhDiE/OCVoChp8HADsh65UBkETjT6h24DuZDjkdwh0PFWkhNxcO91pOQUCwXyAhrFNeXShOWuaqzzgtIlFyLc5hhw2BWmU25rNfEgBzTpAJWY4RIRb10TT11yJGN4bbiYg1AMnMs5LkwgBpdLgAUckts5O98CgVTgJs1oXd73Xd/nOi3Mg1yu2oHMD1ED3GHZkh7IJmeU0mVA2ClQ1ZIRyqSWxIFWKxCdOrm/gWDROLcyJpqpa1GUCoSMbXDDex3h2CXmtUV8UwHH58fHx+fQ54Vqhgzh/efnp+87c2ZURypUowRhWMiMJvE8LAisVkmTIYAVCXFpkgQBEyap7skQwWfafOhF8R0MNj4DirJhJ98AwSgldB4RFxTKf6AJ3TncqZOZ+vzQU72KnOXglrpSlirqFxlWNdNxA/0mDZCvsrE3DaZPbVgFn9/mvc8+5vYVMBBsr1gL2CvXfgsEjAfba9DWQIpcIht0i9x2/nMa4bNH9EjLIsqnNtT+NykrT6/6F73X0PQGTFMcLHFgzFYlu+2iwsjkjx59DRhIyweVAakxye+AIAOVa2gcEBD0C7pzP/jFVBEJnDu8O6SfsiQyUNiR6ExFURP9FABygVjxGmdbZZPdwLmjAIIdAdQbiHTYI7wC5wwIzNw7IBVxO3grWiixHQvKP4f4+bFqInBemuDJq8JkDDOAco0rVbIoRjWlivzWv7OEwYjJQGoQE45tywI8MWJfyipvvQJEXaJ0m3f5ku7Pj8MGxa9UXeCGHBMr1LmKRPjbBhCOVR/x5Yc4BEnsFEgJa3QFiLACcynk5DBP/oT2LZS+07THPAMYIfJT1PU1IIjlGgnj82FSjC2SPlf/Ul8EIqIMNITx+XkNhpkw8h1Gv9LIBgHXFSCcO2Ryddv7MxwfQbJJqLu7DKQA6rYbLoOYjBr9D2R5AkIT8G0zIG2Vi8E6Ea2PbGCcdhkIqiYiWnn/MxwfH6ImMDoMKyDOLBRdAgKJqRA8teK0TnF8eGX5NSDwN0g5q+6nOMSmdQgrxIbBf0mgAR9ZXWMI1ARF8z47610++LqjYFE1V4DUdJwCpPkxQz4+gleV+qSjVAdRVdeBSCgxZG/6/+rbGrboCpCS/gbLBb8A8rnSF4dspL0GpMZMi6rnw7v+sx7F7qq9CKQt6Zx+AWSl+RIrIzG8BqREZO3qlfc9A9Jc4ohLQIr+859az6zKtdd0xCUg4T2QHOs+PwTi/6nBPSIZZDx4FUi1Fq2dumT3nLHMJdFCFCQOSv5Y2r9rGqGzBNG0KYp3qb7Fj1K1i+2CP4QIIiCWUDvTsHcFIss0Dv7qWfJdWa0ngQjxRzn7+1ERhmFFr9DsDjEijhtGaXTsCwDVlVCLQEp07LpMXcaaGwbsqyMQdwjk8VMgSLlSPEXv3VrWrjlWYQk3c4Fyjnbfx1qsDSEd7cKWHQtJi6wF1v8VECsMMQuWZKRHOtLlrfIBtZdqFjhGw/UVLpeMlSWvzj6yI/GiZFla9V9xBPk/inCsDkCx2XLTEIfpZVbWNFeBsP6Axe1iEaNkuzg+rwDkP+MIqgi5QliY20EcB9HlXO1obNma4nUNiGOBPh++DsOTjw8vc0X9a/4bIChJ5L3fOY44SPN+YHQyWSx3EUiNekzFoHPYqTqzd3EiyOhdsw5R/oEjIkAHOKaGtBeVyoTkkmg1zOeQsiN9yA44kg0IqlGf+++AoNL1+R4JK7Ysv12yWuBcxZwJhc0ufikPFoLlh7xiiuE2Icrvgcho3TfhS0QtAta4rJurIYpTo63ShbJWNhVSUHnoWadBTX7j2X8PRCzLO8lKXAEW1mt/BoQWT4zGopSSCYwO+oEQGZnfb5S9WSmkcAPljsQQ72+DNn8MheUImmAU4I752xwAEVuR+xj9F1qA+WDtFmLX8qILQJyVOSvz2i3T7pLBFKS466PR7WGmbrdbjGav9liGAYwpWGtvzLWosSXVUCFdPtBNTyVzpgbiqLuNbGWvXYZsWp78HkhRasmPMTgU1jUJWSMsT96DKEIMQZGEoFi0LbHAW7IQmVZVGhaaHPVHV60MILP7qjHjoGEo0//WNfU69LwEBBPDcWypCEsWhqTtTDk8yA6CI8abIklYrMUVGAoHgmaraKeqty03KJDJuunfMq3vadRWFj8Fok7M1r4aW6+CAJcCY1DKhGShW6m/aeObyLP4v1Mb85OFyauKVqErMa0BsXWtCVCTomhbSfkhEKZDrtCybUVRQCQovmOY2AGa421u4SbvCE3xGXvCLGXkYe9plG1d0pYhsGmtNFZhtWQCgrKPqSpXOn4DRAOBKklUw9JynEiCUIUlEGXKDOtGWMOqqUno54X5Ji0RAggtwBKILpjNOFZ+9aKyy4VTIFtqTb7qkqgoO24XmjFHWzDGKaNgmfNUJC6nJAYkixRPcWSC8Dsg1O4pa6qhIHl+Vy330I5rMCYIm7fCKC+2TPgKh4klzkrNr5LeuDkUUG11Jno/tlpc/0KxUXMYwDDtgJzfgs3uj2DMJ8JsB2iXbamYPqaeFGURgZnRKn8MxCkOLlhhx5kEC0OYYNzewZgF6XbAjTBJ3GTRPPwlU3w6Cyz9EFht+ZiWA8qd0boGBBWEokS0wzb0EzfUrsYl4TsIx5zYKs8QJ39J568rK9Mub+NEMzmeSUfKH4hWw8KILvEkLw0Y0ZzFmgPHHFkDCWHLxbCKaDw5MzXW8smDRg2nLhZXU3W/bK4B4bbSRcYBDR8m+tbEx2+lbM8pdEJVCX4ZyvhgjaqDNdTKdi8Uy9gPS8jtNSANN0X3S1cWLhmqC0iMIVD6sAtlFnFzjoonPQu3uGgFkOEXt7lcCuMJZGZIZDQS/gHIgYeJxGI+M4RdqKlxZtuoWK2BlOW1VFd3x04ZBwP1vQj9mENbdb9ZWGaBWQo1/TKZwWIRttSq0jszAHV9DUjBKbDlXE83HjaOQSfzomM8ZNeNyqAH0VTDACUsWi3rmGYmJUnu310E0ioSGl9TjznckDgDEsHwUGgJGnTFFGIxfgyreDJM8Rcn4cZpuIVFaBbjzJ9VrDmjYe28+ikQpJXco5UDCYYf4i3OYCwIZOAOMQG1YTnft5hylGAGWKdAewln4nZbpDUxHKFx1eXar5XY4VRFq4BkpRMaZKiSJgqZYM3kBWWgyYumKelKcjGuc5jkZ+ZsEwcbm+Yt1WQYWF6zWrVlyHyQBhGKTj+lGhTRxeukpdlTSpU6ylqKrCY00YTxFifmxVVwvItvAntfp5oIaK4CabC1UIux3KiIcm7fJ7MyqH7ExJWphRTbK7nDSSPMHZBVwG/lDE0/o9qyZJ69ArlWxC6ZLWOHE58P06IDQy9EjYk7Kllx4Q1MtjChYU08yTDkcQayzrpuKVVTLAts00VYz2Nhtb1W1+LOSVoGFmxY0BDdh/Z3eWdylIKWkAJaFfdExGA2CIfJIyl+3KGCOGxZSilcqVsy8QoL+aVw5HALx/N4u+xRHU2teD4wPadsxWUQGM2/cPzpQ6ZRU2oZ8UlIVZeBl6saUWxVz1blgOlQzR5CF5njYgNkXDw9/S0Q7P6XyKcbaJWUJWEK08Mc3Yf5Q3w8zDEbpMoihaQGKaSOO11LsXUcTG0gjH2eNh0frOpeBNJw4bWSLIsucQPkxndaTLnRsBlHFlUhqlEcki4tDYRqGtkc4nFGEChZ9PLtHsjjcV20AMQVBKKh6xy7TAKvegK1toBgZgjCT/UPqkdxtg8M69XHDEPi5AJG0LC/t8qYbv/+LZC65uOoAuQ2SdY0n1SSvqetNEipIrRwA2GYHF2kyKyLSkmhZ44s3KaYrFz3fhe1O1D2HwIRg9wN9GkpQlkA8TldDud0sHqdZvsLIKrWanwx0belXhMK7foi4AnETma4tJjnLu58OFnBKOFZJGaJt8SQMHEEZzqU8TrSOTASDCscCiSakgQN4rZ5CnteRGME3nOPYYqBm38EwsdRHVgCI5UmLkwhMQdMkZm6y2FYJX7kgVB6o41I5muVjGlQMPODCp63+qSjm3eF/AOQiivcjiyxgCtFEzHpdZKaG6kMYVPHBitCnPxg2CaUWmoKyQdxEKt8gXKtGP07kEaBwJOYFUnRoVkdkJ6iqIGR35ohnyBwCEpdvmGITkdYA5ErUYzUZRWnyXtjZbxfA2laA+LywcKpGOK2MDSFR3Fjes2P8Ky45zbv90BiCsHU5rJ4b+Ugx/Vhbky3hLdkfP5zIASBp8GrOo9DsvizN6dQ2PIC2BWppjsg4NyQYzV1MKu19uJx4khEbdj2gzRaMzT9cIwabc3xu0eTToA0XKWk2aL1WSftiSwFstN1OETQiz0ryNfYzRQapmLATbVPlVw3K1epCs0d+1j9qavqt0BQuahLrul2YIiFKOG4EhS0Sjxsl0ZpsQdKVjTPHpbRocZWkC4qOR+cwJZwlHH14Q51Ig7PDTGL/TkQLr5JCF3QkQQ1W+F2CoTucFN4C4xqsJzQMQIIcSlcExATKq01NJoP6Xod11FcZdskql8puwFpRbo1ZzgHQsmgi9xvuwkazCBiW68YmfEDN7gG3CR1qGzlrFkAqfh0nT6+N/4CSO3qJmcIsnXAa1VJQPblUHAqaEgWGDCrl096zlAdD4M3XHjDE3ClrTipKHFxgY/rlnx8rCq6+y+AYM9or+WhmBzijh2TITgCYgW/MCyzZatq3DSv4f61il9PUlp1UZ+v4U4USJwGK21bbh4Dvw5EQy1zVieVxikP3gRas5pYxKixvlVZwpygdfkUUKUyKQWLNQc+oON0C5E+AfRjZZd8hE/Ua2Rhs3myBKpx2HBYaDcgmwKFFYFhuHM+c1iqYrT6RKNtAMUSGktUeeU6MWuQsfb1q1gr778FogW8cKDqlu/Su0M2vQdboveLCsTQ8/t4mrQRRiivdYMgKjn6rKiYiq6Pkr93kmo9fgFERJO21xLpM46k0Pd4JxRNBUle71hBg151TeG4i8P2opR8HEWIJ9koNvYhk+nIstijPtT/HAgeoM01aE16esIQzelOgNhK5Mnnvits+w4fN+96PL3JpQFh3VfwmQ+69+kr+/Ly/8uff5vTYpNTpXt6+OwEC8h5nzLP0zU3LTzsIsbF+het2snnfOBMdKDrcxEziF2UW0hyaoLAz+/8KUeWq9y1rj2WDDb1MXl1x0fp3QrI7QwIkQznQCRwhwwNARLkhegsy5YwuBMtxB8CWWynLtWjan4YzlcVrXIXT4FwT85wJnpY340iP6Q92wBYMOUCkHJVXZyabuCv6UcuADnnSNoldehmRIeWcrMjPtshuQRkoSy6A1rMoJaD3gAJFgwOb/ZvDsNi+8MmHPNG5MwOHydsfitl14CURVMWdVkXpdhE3ZHU+iERG97qyIkfmZLeMwN9S2rgl8o9DPYGdmLFpHdAyqnhC4x0VZhARGvAEU3Y3yl74N94riVm+g4+isoM72M4lC8xwH7S+W+ALJ6XaPEINR4EdrazytLDN0CSjrwRLm9FxiMgYStYOyjzJ+DaGyDTdwDwOZBKfQi33bauzYeUjJwCCRboxzdAQjjjyImqH1ksGOY3QLg/t7FaBb7iryj1iwwR5nT9VJ57C+R2i2+UJAE52vUcdqxAcXtJ/lVlVw+CPYY1VqnuQv5dV6rxxMhw+xYIPwzxnCGMHOPtWPSGRG22tFsr0lem6yBE4bd+PblhmDv0O5Ej4QAjNfnT+8/gPwfdR3IFSPx8y5GT+NhH2iIvoxi92Y5Dw5sQ5SXA7uPzdc8fqKjDwQ73HlEmbENEsMb7rPI2TKWfPY5gq2tvPWKwFPHII4I80WPvs+/c+hEQvAWQXpIEsdtwQkHZq7GO8Zn2Ji7XcA+BcMLfeMRouw0OmOIHE61sVuq9HzwVLa7BjePr7jeYJ1FVG6H7yK8BiZ9veXKGdtjpcxii/wGQ1+MxvvrP3aVBEh5G/hFArDYXbqeixXopZcu/RxLDoYneOUJYsstAno8Xvrfz0R9da09xBAJZMeQAiMLk2lR4+9AP4q1jjnwXMoKaGM+B4Ltm+wNhzOZeDMi8ph+Pq4y3M4e3zRX3QPxwNvmoUCyRZYd+RBT9ueDImXIxsl1UfeNRiBJSDeL9w0vD4TXhLEjJvoLfG68dENvO0avLCd6HYyBRq1JvlN1W374F8qlV9zOPeKDiRwHYWyAhHseean6t9HAExGqp0Vaw/fdAdhepQxSifTi3uZMVPQTC1ieTm2WHQsZQa7ENJR6sytoe0rfm14AcaPuQfV1qJjJrIMKM+51fsLo2v8gL/MrDWmHhTEeSSQu37xnij8tfw9bSLihYZLjY+PiGI1s/IonaSsO87Sc5C7W0zBgPlnSP7e8BXB93sVUiISzN1lurNT4PHOJC0bLA6HcPZNpXpdVt1iK/BXI7jpGHU90Ab75VdjW/Z0ASaxkjzUB0m9Jqu3zaw/edyfrU5P+AcfHropa8B3J4tQiYhimDAYnrXc1L3lj48q2q+7OsZUhjDuE7FBD890A2FttYmnnd/jvtDFo/7mL+0FbLz9Mqz/9c8hKrdRai+CNB2gIZvrp3ohXDro8sAQm3lR+Zxcq2atmOho3ITI+heK9GF8sJrMkPfvNo7N4TZ9lvROtTverGQFiPQSs9tntD1/5sETBM+/l0Q/MgnhmE81lYrZKiIi3HWRaDpBj4+kXJ12TS7IsJvF6+mUK5IOw9WnZN2fdl44mVKlDDtFmZleBgLj3tfI22SZYIMOWk0/Nxt5WvNc8r2aBdyj21Ma4pTtDCXHKM8DbZWyBvLUa0za4Wxmt1Klqsi7zYg2vCMM0ubREjO8xUPb5NcBFNofaOO+SG4VA7wEHzKP5NPrIDkh2IJoHYNpSgzxynXcDDkGpnPsbz6s0XRC5oiAGyIMFaeD8LilbRVfYz0UrBzESQkQgdGfQh3GmLedokPYRsThPOccyCovSvqtOHt2U/9CN3evZFiIIahMU4opTRrNaiIX9X4YcG+/1iEkXAX/RrWPrZl018PDI650B0S7a83BccWdb1uUYk5obkC+1YkYU0e62yGMsYLq5CM5E6fzCz2VF1epf86VSExZrCqjK3CxqfAgSJ7hbI165nlsZs3oz6sDQx/qBsY9kFUhyfCm4buNtKlXgSv/tI7vLLsb68hsl+9QX4d/vBpBMgyYuEbDVzwhDpelWt3dnteWqXtK+4FmC/lhbFr4u977VlzZHxCpDkYLLLXvfUP2drZfYHo1wOGrc/SYAYXoDc8716QhgpkF4DIL+y436p4PbRdCYd+ClySt9vMXV2lEfNA/Bzrx0vTIddIn+61+6b/MGWx/3++n0bf3B28Tnawand6dVb+7R/rYC8pt/jGsfj3yS741e87tpG/Nfivf3cjt2Mj9JvrKVfY5Nbp99dW/wEGwXisf7Fv8f2xyXXv9cmo1qHmG3YWXnt76tf32NyOP+62EEbDeY4KsGj4cAUHNy2OzHOBE/ESyc//tXCFzu4v9LwOqULICM0xF4Xt2mbiV7BSlxQLsJYvOYbFlIgn4zKyuey/9eCAcsfcTvFsKBG+9PC+1q0sKTwEqZtfrPO+DuOd/xKHGXiPqnRE2+eC5SjCY9cLhP1eJK+9aSjI2uEljh7Rv3icuvawI4EgoFXv2M1zkAOuf2YKWKXiuPxtPmbgEziM5Llj90ET908xvHq71DOPzn5WHBsVtINEFiC+/35OuSnqk86IltXP8upU3p/pKteSfrwfiGJj6nLdGCqN9O9ALj7vUyFg7umPp73zYMwf7dtHeL/A/kfAvJ/qfuG0q9wXfsAAAAASUVORK5CYII=" alt="Clare Scout County badge" width="200" height="156"></span>
+    <div class="brand">
+      <h1>Clare Scout County</h1>
+      <p>County Events Calendar</p>
+    </div>
+    <div class="top-actions">
+      <button class="ghost-btn" id="btnIcsAll" title="Download all shown events as a calendar file">Export .ics</button>
+      <button class="ghost-btn" id="btnAdmin">Admin</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="controls" aria-label="Filters">
+    <div class="ctl-row">
+      <span class="lbl">Section</span>
+      <div class="pills" id="sectionPills"></div>
+    </div>
+    <div class="ctl-row">
+      <span class="lbl">Type</span>
+      <div class="pills" id="catPills"></div>
+      <span class="spacer"></span>
+      <div class="seg" role="group" aria-label="View">
+        <button id="viewCal" aria-pressed="true">Calendar</button>
+        <button id="viewTbl" aria-pressed="false">Table</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="ctl-row" style="margin-bottom:12px" id="navRow">
+    <div class="month-nav">
+      <button class="icon-btn" id="prev" aria-label="Previous month">‹</button>
+      <h2 id="monthLabel">—</h2>
+      <button class="icon-btn" id="next" aria-label="Next month">›</button>
+    </div>
+    <button class="btn sec" id="today" style="padding:7px 14px">Today</button>
+    <span class="spacer"></span>
+    <span class="note" id="countNote"></span>
+  </div>
+
+  <main id="calView">
+    <div class="cal">
+      <div class="dow"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div>
+      <div class="grid" id="grid"></div>
+    </div>
+    <div class="agenda" id="agenda"></div>
+  </main>
+
+  <main id="tblView" hidden>
+    <div class="ctl-row" style="margin-bottom:12px">
+      <div class="seg" role="group" aria-label="Range">
+        <button id="rangeUpcoming" aria-pressed="true">Upcoming</button>
+        <button id="rangeAll" aria-pressed="false">All events</button>
+      </div>
+    </div>
+    <div id="tblWrap"></div>
+  </main>
+
+  <footer class="site">
+    <span id="stamp"></span>
+  </footer>
+</div>
+
+<!-- Event detail -->
+<div class="scrim" id="evScrim">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="evTitle">
+    <header>
+      <h2 id="evTitle">Event</h2>
+      <button class="x" data-close="evScrim" aria-label="Close">×</button>
+    </header>
+    <div class="body" id="evBody"></div>
+    <footer>
+      <button class="btn" id="evIcs">Add to my calendar</button>
+      <button class="btn sec" data-close="evScrim">Close</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Admin -->
+<div class="scrim" id="adScrim">
+  <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="adTitle">
+    <header>
+      <h2 id="adTitle">Admin</h2>
+      <button class="x" data-close="adScrim" aria-label="Close">×</button>
+    </header>
+    <div class="body" id="adBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------------------------------------------------------- config */
+var API = '/.netlify/functions/events';
+
+var SECTIONS = [
+  {id:'beavers',  name:'Beavers',  colour:'var(--sec-beavers)'},
+  {id:'cubs',     name:'Cubs',     colour:'var(--sec-cubs)'},
+  {id:'scouts',   name:'Scouts',   colour:'var(--sec-scouts)'},
+  {id:'ventures', name:'Ventures', colour:'var(--sec-ventures)'},
+  {id:'rovers',   name:'Rovers',   colour:'var(--sec-rovers)'},
+  {id:'scouters', name:'Scouters', colour:'var(--sec-scouters)'}
+];
+var SEC_BY_ID = {}; SECTIONS.forEach(function(s){ SEC_BY_ID[s.id]=s; });
+var ALL_SECTION_IDS = SECTIONS.map(function(s){return s.id;});
+
+var CATEGORIES = [
+  {id:'training', name:'Training', swatch:'var(--training-edge)'},
+  {id:'county',   name:'County',   swatch:'var(--county-edge)'},
+  {id:'national', name:'National', swatch:'var(--national-edge)'}
+];
+
+var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+/* ---------------------------------------------------------------- state */
+var state = {
+  events: [],
+  updatedAt: null,
+  section: 'all',
+  cats: {training:true, county:true, national:true},
+  view: 'cal',
+  apiDown: false,
+  range: 'upcoming',
+  cursor: startOfMonth(new Date())
+};
+
+/* ---------------------------------------------------------------- utils */
+function $(id){ return document.getElementById(id); }
+function el(tag, cls, txt){ var n=document.createElement(tag); if(cls) n.className=cls; if(txt!=null) n.textContent=txt; return n; }
+function startOfMonth(d){ return new Date(d.getFullYear(), d.getMonth(), 1); }
+function iso(d){
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function parseISO(s){ var p=String(s).split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+function todayISO(){ return iso(new Date()); }
+function fmtDay(s){ var d=parseISO(s); return d.getDate()+' '+MONTHS[d.getMonth()].slice(0,3); }
+function fmtLong(s){ var d=parseISO(s); return DAYS[d.getDay()]+' '+d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear(); }
+function fmtRange(ev){
+  if(!ev.end || ev.end===ev.start) return fmtLong(ev.start);
+  var a=parseISO(ev.start), b=parseISO(ev.end);
+  if(a.getMonth()===b.getMonth() && a.getFullYear()===b.getFullYear())
+    return a.getDate()+'–'+b.getDate()+' '+MONTHS[a.getMonth()]+' '+a.getFullYear();
+  return fmtDay(ev.start)+' – '+fmtLong(ev.end);
+}
+function fmtRangeShort(ev){
+  if(!ev.end || ev.end===ev.start) return fmtDay(ev.start);
+  return fmtDay(ev.start)+' – '+fmtDay(ev.end);
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function catName(id){ for(var i=0;i<CATEGORIES.length;i++) if(CATEGORIES[i].id===id) return CATEGORIES[i].name; return 'County'; }
+function toast(msg){
+  var t=$('toast'); t.textContent=msg; t.classList.add('on');
+  clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('on'); }, 2400);
+}
+function daysBetween(startISO, endISO){
+  var out=[], d=parseISO(startISO), last=parseISO(endISO||startISO);
+  var guard=0;
+  while(d<=last && guard++<400){ out.push(iso(d)); d.setDate(d.getDate()+1); }
+  return out;
+}
+function sectionLabel(ev){
+  if(!ev.sections || ev.sections.length===0 || ev.sections.length===SECTIONS.length) return 'All Sections';
+  return ev.sections.map(function(id){ return SEC_BY_ID[id] ? SEC_BY_ID[id].name : id; }).join(', ');
+}
+
+/* ---------------------------------------------------------------- filtering */
+function visible(){
+  return state.events.filter(function(ev){
+    if(!state.cats[ev.category]) return false;
+    if(state.section!=='all'){
+      var secs = (ev.sections && ev.sections.length) ? ev.sections : ALL_SECTION_IDS;
+      if(secs.indexOf(state.section)===-1) return false;
+    }
+    return true;
+  });
+}
+function sortByDate(a,b){ return a.start<b.start ? -1 : a.start>b.start ? 1 : a.name.localeCompare(b.name); }
+
+/* ---------------------------------------------------------------- controls */
+function buildControls(){
+  var sp=$('sectionPills'); sp.innerHTML='';
+  var mk=function(id,name,colour){
+    var b=el('button','pill'); b.type='button';
+    b.setAttribute('aria-pressed', String(state.section===id));
+    if(colour){ var d=el('span','dot'); d.style.background=colour; b.appendChild(d); }
+    b.appendChild(document.createTextNode(name));
+    b.onclick=function(){ state.section=id; buildControls(); render(); };
+    sp.appendChild(b);
+  };
+  mk('all','All Sections',null);
+  SECTIONS.forEach(function(s){ mk(s.id, s.name, s.colour); });
+
+  var cp=$('catPills'); cp.innerHTML='';
+  CATEGORIES.forEach(function(c){
+    var b=el('button','cat-toggle'); b.type='button';
+    b.setAttribute('aria-pressed', String(!!state.cats[c.id]));
+    b.style.color = 'var(--'+c.id+')';
+    var sw=el('span','swatch'); sw.style.background=c.swatch; b.appendChild(sw);
+    b.appendChild(document.createTextNode(c.name));
+    b.onclick=function(){ state.cats[c.id]=!state.cats[c.id]; buildControls(); render(); };
+    cp.appendChild(b);
+  });
+}
+
+/* ---------------------------------------------------------------- render */
+function render(){
+  $('viewCal').setAttribute('aria-pressed', String(state.view==='cal'));
+  $('viewTbl').setAttribute('aria-pressed', String(state.view==='tbl'));
+  $('calView').hidden = state.view!=='cal';
+  $('tblView').hidden = state.view!=='tbl';
+  $('navRow').style.display = state.view==='cal' ? '' : 'none';
+  if(state.view==='cal') renderCalendar(); else renderTable();
+  $('stamp').textContent = state.updatedAt
+    ? 'Last updated ' + new Date(state.updatedAt).toLocaleString('en-IE', {dateStyle:'medium', timeStyle:'short'})
+    : '';
+}
+
+function renderCalendar(){
+  var evs = visible();
+  var cur = state.cursor;
+  $('monthLabel').textContent = MONTHS[cur.getMonth()]+' '+cur.getFullYear();
+
+  var byDay = {};
+  evs.forEach(function(ev){
+    daysBetween(ev.start, ev.end).forEach(function(d){
+      (byDay[d] = byDay[d] || []).push(ev);
+    });
+  });
+
+  var first = new Date(cur.getFullYear(), cur.getMonth(), 1);
+  var offset = (first.getDay()+6)%7;           // Monday-first
+  var gridStart = new Date(first); gridStart.setDate(1-offset);
+  var monthCount = evs.filter(function(ev){
+    return daysBetween(ev.start,ev.end).some(function(d){
+      var p=parseISO(d); return p.getMonth()===cur.getMonth() && p.getFullYear()===cur.getFullYear();
+    });
+  }).length;
+  $('countNote').textContent = monthCount + (monthCount===1?' event':' events') + ' this month';
+
+  var grid=$('grid'); grid.innerHTML='';
+  var tISO = todayISO();
+  for(var i=0;i<42;i++){
+    var d=new Date(gridStart); d.setDate(gridStart.getDate()+i);
+    var key=iso(d);
+    var cell=el('div','cell'+(d.getMonth()!==cur.getMonth()?' out':'')+(key===tISO?' today':''));
+    cell.appendChild(el('span','daynum', String(d.getDate())));
+    var list = (byDay[key]||[]).slice().sort(sortByDate);
+    var show = list.slice(0,3);
+    show.forEach(function(ev){ cell.appendChild(chip(ev, key)); });
+    if(list.length>3){
+      var m=el('button','more','+'+(list.length-3)+' more');
+      (function(dayKey){ m.onclick=function(){ openDay(dayKey); }; })(key);
+      cell.appendChild(m);
+    }
+    grid.appendChild(cell);
+  }
+  renderAgenda(evs, cur);
+}
+
+function chip(ev, dayKey){
+  var b=el('button','chip '+ev.category); b.type='button';
+  var multi = ev.end && ev.end!==ev.start;
+  var nm=el('b', null, (multi && dayKey!==ev.start ? '↳ ' : '') + ev.name);
+  b.appendChild(nm);
+  var meta = ev.time ? ev.time : sectionLabel(ev);
+  b.appendChild(el('small', null, meta));
+  b.title = ev.name+' · '+catName(ev.category)+' · '+sectionLabel(ev);
+  b.onclick=function(){ openEvent(ev); };
+  return b;
+}
+
+function renderAgenda(evs, cur){
+  var box=$('agenda'); box.innerHTML='';
+  var inMonth = evs.filter(function(ev){
+    return daysBetween(ev.start, ev.end).some(function(d){
+      var p=parseISO(d); return p.getMonth()===cur.getMonth() && p.getFullYear()===cur.getFullYear();
+    });
+  }).sort(sortByDate);
+  if(!inMonth.length){ box.appendChild(state.apiDown ? apiDownBox() : emptyBox('Nothing on this month','Try another month, or switch to the table view for everything coming up.')); return; }
+  box.appendChild(buildTable(inMonth));
+}
+
+function apiDownBox(){
+  return emptyBox('The events service is not responding',
+    'The calendar loads its events from a Netlify Function. That function is only deployed when the site is built from Git or pushed with the Netlify CLI, never by drag and drop. See the README.');
+}
+function emptyBox(title, sub){
+  var e=el('div','empty');
+  e.appendChild(el('strong', null, title));
+  e.appendChild(document.createTextNode(sub));
+  return e;
+}
+
+function buildTable(list){
+  var t=el('table','tbl');
+  var thead=el('thead');
+  var hr=el('tr');
+  ['Date','Event','Type','Sections','Hosted by','Contact'].forEach(function(h){ hr.appendChild(el('th',null,h)); });
+  thead.appendChild(hr); t.appendChild(thead);
+  var tb=el('tbody');
+  list.forEach(function(ev){
+    var tr=el('tr');
+    tr.onclick=function(){ openEvent(ev); };
+
+    var td1=el('td','when'); td1.appendChild(document.createTextNode(fmtRangeShort(ev)));
+    var yr=el('div','sub', parseISO(ev.start).getFullYear() + (ev.time? ' · '+ev.time : ''));
+    td1.appendChild(yr); tr.appendChild(td1);
+
+    var td2=el('td');
+    td2.appendChild(el('div',null,ev.name));
+    if(ev.location) td2.appendChild(el('div','sub', ev.location));
+    tr.appendChild(td2);
+
+    var td3=el('td');
+    td3.appendChild(el('span','tag '+ev.category, catName(ev.category)));
+    tr.appendChild(td3);
+
+    var td4=el('td');
+    var secs=(ev.sections&&ev.sections.length)?ev.sections:ALL_SECTION_IDS;
+    var wrap=el('span','secdots');
+    secs.forEach(function(id){
+      var s=SEC_BY_ID[id]; if(!s) return;
+      var d=el('span','secdot'); d.style.background=s.colour; d.title=s.name; wrap.appendChild(d);
+    });
+    td4.appendChild(wrap);
+    td4.appendChild(el('div','seclist', sectionLabel(ev)));
+    tr.appendChild(td4);
+
+    tr.appendChild(el('td', null, ev.host||'—'));
+
+    var td6=el('td');
+    td6.appendChild(document.createTextNode(ev.contactName||'—'));
+    if(ev.contactEmail) td6.appendChild(el('div','sub', ev.contactEmail));
+    else if(ev.contactPhone) td6.appendChild(el('div','sub', ev.contactPhone));
+    tr.appendChild(td6);
+
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  return t;
+}
+
+function renderTable(){
+  var evs=visible().sort(sortByDate);
+  if(state.range==='upcoming'){
+    var t=todayISO();
+    evs=evs.filter(function(ev){ return (ev.end||ev.start) >= t; });
+  }
+  $('rangeUpcoming').setAttribute('aria-pressed', String(state.range==='upcoming'));
+  $('rangeAll').setAttribute('aria-pressed', String(state.range==='all'));
+
+  var wrap=$('tblWrap'); wrap.innerHTML='';
+  if(!evs.length){
+    wrap.appendChild(state.apiDown ? apiDownBox()
+      : emptyBox('No events to show', state.events.length ? 'Adjust the section or type filters above.' : 'The calendar is empty. Use Admin to add the first event.'));
+    return;
+  }
+  var groups={}, order=[];
+  evs.forEach(function(ev){
+    var d=parseISO(ev.start), k=d.getFullYear()+'-'+d.getMonth();
+    if(!groups[k]){ groups[k]=[]; order.push({k:k, label:MONTHS[d.getMonth()]+' '+d.getFullYear()}); }
+    groups[k].push(ev);
+  });
+  order.forEach(function(g){
+    var sec=el('section','mgroup');
+    sec.appendChild(el('h3', null, g.label));
+    sec.appendChild(buildTable(groups[g.k]));
+    wrap.appendChild(sec);
+  });
+}
+
+/* ---------------------------------------------------------------- detail */
+var currentEvent=null;
+function openEvent(ev){
+  currentEvent=ev;
+  $('evTitle').textContent = ev.name;
+  var rows=[
+    ['Type','<span class="tag '+ev.category+'">'+esc(catName(ev.category))+'</span>'],
+    ['When', esc(fmtRange(ev)) + (ev.time ? ' <span class="sub">· '+esc(ev.time)+'</span>' : '')],
+    ['Sections', esc(sectionLabel(ev))]
+  ];
+  if(ev.location) rows.push(['Where', esc(ev.location)]);
+  if(ev.host) rows.push(['Hosted by', esc(ev.host)]);
+  var contact=[];
+  if(ev.contactName) contact.push(esc(ev.contactName));
+  if(ev.contactEmail) contact.push('<a href="mailto:'+esc(ev.contactEmail)+'">'+esc(ev.contactEmail)+'</a>');
+  if(ev.contactPhone) contact.push('<a href="tel:'+esc(ev.contactPhone.replace(/\s/g,''))+'">'+esc(ev.contactPhone)+'</a>');
+  if(contact.length) rows.push(['Contact', contact.join('<br>')]);
+  if(ev.description) rows.push(['Details','<div class="desc">'+esc(ev.description)+'</div>']);
+
+  $('evBody').innerHTML = '<dl class="detail">' + rows.map(function(r){
+    return '<dt>'+r[0]+'</dt><dd>'+r[1]+'</dd>';
+  }).join('') + '</dl>';
+  open$('evScrim');
+}
+
+function openDay(dayKey){
+  var list = visible().filter(function(ev){ return daysBetween(ev.start,ev.end).indexOf(dayKey)>-1; }).sort(sortByDate);
+  $('evTitle').textContent = fmtLong(dayKey);
+  var box=el('div');
+  list.forEach(function(ev){
+    var b=chip(ev, dayKey);
+    b.style.marginBottom='6px'; b.style.padding='8px 10px'; b.style.fontSize='13px';
+    box.appendChild(b);
+  });
+  $('evBody').innerHTML=''; $('evBody').appendChild(box);
+  currentEvent=null;
+  open$('evScrim');
+}
+
+/* ---------------------------------------------------------------- ics */
+function icsDate(s, plusDays){
+  var d=parseISO(s); if(plusDays) d.setDate(d.getDate()+plusDays);
+  return iso(d).replace(/-/g,'');
+}
+function icsEscape(s){ return String(s||'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n'); }
+function buildICS(list){
+  var out=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Clare Scout County//Events//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:Clare Scout County Events'];
+  list.forEach(function(ev){
+    var desc=[];
+    if(ev.description) desc.push(ev.description);
+    if(ev.host) desc.push('Hosted by: '+ev.host);
+    var c=[ev.contactName, ev.contactEmail, ev.contactPhone].filter(Boolean).join(' · ');
+    if(c) desc.push('Contact: '+c);
+    desc.push('Type: '+catName(ev.category));
+    desc.push('Sections: '+sectionLabel(ev));
+    out.push('BEGIN:VEVENT');
+    out.push('UID:'+ev.id+'@clare-scouting');
+    out.push('DTSTAMP:'+icsDate(todayISO())+'T000000Z');
+    out.push('DTSTART;VALUE=DATE:'+icsDate(ev.start));
+    out.push('DTEND;VALUE=DATE:'+icsDate(ev.end||ev.start, 1));
+    out.push('SUMMARY:'+icsEscape(ev.name));
+    if(ev.location) out.push('LOCATION:'+icsEscape(ev.location));
+    out.push('DESCRIPTION:'+icsEscape(desc.join('\n')));
+    out.push('END:VEVENT');
+  });
+  out.push('END:VCALENDAR');
+  return out.map(fold).join('\r\n');
+}
+// RFC 5545 line folding: no content line longer than 75 octets.
+function fold(line){
+  if(line.length<=74) return line;
+  var parts=[line.slice(0,74)], rest=line.slice(74);
+  while(rest.length>73){ parts.push(' '+rest.slice(0,73)); rest=rest.slice(73); }
+  if(rest.length) parts.push(' '+rest);
+  return parts.join('\r\n');
+}
+function download(name, text, mime){
+  var blob=new Blob([text],{type:mime||'text/plain;charset=utf-8'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name;
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },200);
+}
+
+/* ---------------------------------------------------------------- modal plumbing */
+function open$(id){ $(id).classList.add('on'); document.body.style.overflow='hidden'; }
+function close$(id){ $(id).classList.remove('on'); document.body.style.overflow=''; }
+document.addEventListener('click', function(e){
+  var c=e.target.getAttribute && e.target.getAttribute('data-close');
+  if(c) close$(c);
+  if(e.target.classList && e.target.classList.contains('scrim')) close$(e.target.id);
+});
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ close$('evScrim'); close$('adScrim'); }
+});
+
+/* ---------------------------------------------------------------- admin */
+var admin = { pin:'', draft:null, editingId:null };
+
+function openAdmin(){
+  var saved = sessionStorage.getItem('ccs_pin');
+  if(saved){ admin.pin=saved; adminPanel(); } else { adminPinScreen(); }
+  open$('adScrim');
+}
+
+function adminPinScreen(msg){
+  $('adTitle').textContent='Admin';
+  var b=$('adBody'); b.innerHTML='';
+  var p=el('p','note','Enter the admin PIN to add or edit events.');
+  var row=el('div','pinbox');
+  var inp=el('input'); inp.type='password'; inp.inputMode='numeric'; inp.autocomplete='off'; inp.placeholder='••••';
+  var go=el('button','btn','Unlock');
+  row.appendChild(inp); row.appendChild(go);
+  b.appendChild(p); b.appendChild(row);
+  if(msg) b.appendChild(el('div','err',msg));
+  var busy=false;
+  function submit(){
+    if(busy) return; busy=true; go.disabled=true; go.textContent='Checking…';
+    fetch(API+'?action=auth',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({pin:inp.value})})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(d && d.ok){ admin.pin=inp.value; sessionStorage.setItem('ccs_pin', inp.value); adminPanel(); }
+        else { busy=false; adminPinScreen('That PIN is not right. Try again.'); }
+      })
+      .catch(function(){ busy=false; adminPinScreen('The events service is not responding. The site must be deployed from Git or the Netlify CLI, not by drag and drop.'); });
+  }
+  go.onclick=submit;
+  inp.onkeydown=function(e){ if(e.key==='Enter') submit(); };
+  setTimeout(function(){ inp.focus(); }, 60);
+}
+
+function adminPanel(){
+  admin.draft = admin.draft || state.events.map(function(e){ return JSON.parse(JSON.stringify(e)); });
+  $('adTitle').textContent='Admin · '+admin.draft.length+' event'+(admin.draft.length===1?'':'s');
+  var b=$('adBody'); b.innerHTML='';
+
+  var bar=el('div','ctl-row'); bar.style.marginBottom='12px';
+  var addBtn=el('button','btn','+ New event');
+  addBtn.onclick=function(){ eventForm(null); };
+  var sp=el('span','spacer');
+  var exp=el('button','btn sec','Export JSON');
+  exp.onclick=function(){ download('clare-scout-county-events.json', JSON.stringify({events:admin.draft},null,2),'application/json'); };
+  var impLbl=el('label','btn sec','Import JSON'); impLbl.style.cursor='pointer';
+  var imp=el('input'); imp.type='file'; imp.accept='.json,application/json'; imp.style.display='none';
+  imp.onchange=function(){
+    var f=imp.files[0]; if(!f) return;
+    var fr=new FileReader();
+    fr.onload=function(){
+      try{
+        var d=JSON.parse(fr.result);
+        var arr=Array.isArray(d)?d:d.events;
+        if(!Array.isArray(arr)) throw new Error('no events array');
+        admin.draft=arr.map(normalise);
+        adminPanel(); toast('Imported '+arr.length+' events (not saved yet)');
+      }catch(err){ toast('That file did not look like an events export'); }
+    };
+    fr.readAsText(f); imp.value='';
+  };
+  impLbl.appendChild(imp);
+  var lock=el('button','btn sec','Lock');
+  lock.onclick=function(){ sessionStorage.removeItem('ccs_pin'); admin.pin=''; admin.draft=null; close$('adScrim'); };
+  bar.appendChild(addBtn); bar.appendChild(sp); bar.appendChild(exp); bar.appendChild(impLbl); bar.appendChild(lock);
+  b.appendChild(bar);
+
+  var list=el('div','adminlist');
+  if(!admin.draft.length){
+    list.appendChild(el('div','arow','No events yet. Add the first one.'));
+  } else {
+    admin.draft.slice().sort(sortByDate).forEach(function(ev){
+      var r=el('div','arow');
+      r.appendChild(el('span','when', fmtRangeShort(ev)+' '+String(parseISO(ev.start).getFullYear()).slice(2)));
+      var sw=el('span'); sw.className='tag '+ev.category; sw.textContent=catName(ev.category);
+      r.appendChild(sw);
+      r.appendChild(el('span','nm', ev.name));
+      var ed=el('button',null,'Edit'); ed.onclick=function(){ eventForm(ev.id); };
+      var rm=el('button',null,'Delete'); rm.onclick=function(){
+        admin.draft=admin.draft.filter(function(x){ return x.id!==ev.id; }); adminPanel();
+      };
+      r.appendChild(ed); r.appendChild(rm);
+      list.appendChild(r);
+    });
+  }
+  b.appendChild(list);
+
+  var foot=el('div','ctl-row'); foot.style.marginTop='14px';
+  var save=el('button','btn','Publish to the calendar');
+  var status=el('span','note','');
+  save.onclick=function(){
+    save.disabled=true; save.textContent='Publishing…'; status.textContent='';
+    fetch(API,{method:'PUT',headers:{'content-type':'application/json','x-admin-pin':admin.pin},body:JSON.stringify({events:admin.draft})})
+      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
+      .then(function(res){
+        save.disabled=false; save.textContent='Publish to the calendar';
+        if(!res.ok){ status.className='err'; status.textContent=(res.d && res.d.error) || 'Save failed'; return; }
+        state.events=res.d.events; state.updatedAt=res.d.updatedAt;
+        admin.draft=state.events.map(function(e){ return JSON.parse(JSON.stringify(e)); });
+        status.className='ok'; status.textContent='Published. Everyone sees it now.';
+        render(); adminPanel();
+        toast('Calendar updated');
+      })
+      .catch(function(){
+        save.disabled=false; save.textContent='Publish to the calendar';
+        status.className='err'; status.textContent='Could not reach the server.';
+      });
+  };
+  var revert=el('button','btn sec','Discard changes');
+  revert.onclick=function(){ admin.draft=null; adminPanel(); };
+  foot.appendChild(save); foot.appendChild(revert); foot.appendChild(status);
+  b.appendChild(foot);
+  b.appendChild(el('p','note','Changes are only live once you press Publish.'));
+}
+
+function normalise(raw){
+  return {
+    id: raw.id || ('ev_'+Math.random().toString(36).slice(2,10)),
+    name: raw.name||'', start: raw.start||todayISO(), end: raw.end||'',
+    time: raw.time||'',
+    category: ['training','county','national'].indexOf(raw.category)>-1 ? raw.category : 'county',
+    sections: Array.isArray(raw.sections)&&raw.sections.length ? raw.sections.filter(function(s){return SEC_BY_ID[s];}) : ALL_SECTION_IDS.slice(),
+    description: raw.description||'', host: raw.host||'', location: raw.location||'',
+    contactName: raw.contactName||'', contactEmail: raw.contactEmail||'', contactPhone: raw.contactPhone||''
+  };
+}
+
+function eventForm(id){
+  var ev = id ? admin.draft.filter(function(x){return x.id===id;})[0] : null;
+  var m = ev ? JSON.parse(JSON.stringify(ev)) : normalise({});
+  $('adTitle').textContent = id ? 'Edit event' : 'New event';
+  var b=$('adBody'); b.innerHTML='';
+
+  function field(label, node){
+    var f=el('div','field'); f.appendChild(el('label',null,label)); f.appendChild(node); return f;
+  }
+  function text(val, ph, type){
+    var i=el('input'); i.type=type||'text'; i.value=val||''; if(ph) i.placeholder=ph; return i;
+  }
+
+  var fName=text(m.name,'e.g. County Cub Adventure Day');
+  var fStart=text(m.start,'',"date");
+  var fEnd=text(m.end,'',"date");
+  var fTime=text(m.time,'e.g. 10:00 – 16:00');
+  var fLoc=text(m.location,'e.g. Lees Road, Ennis');
+  var fHost=text(m.host,'e.g. Clare County Team / 1st Ennis');
+  var fCName=text(m.contactName,'e.g. Craig Hill');
+  var fCEmail=text(m.contactEmail,'name@example.ie','email');
+  var fCPhone=text(m.contactPhone,'087 …','tel');
+  var fDesc=el('textarea'); fDesc.value=m.description||''; fDesc.placeholder='What it is, what to bring, booking details…';
+
+  var catSel=el('select');
+  CATEGORIES.forEach(function(c){
+    var o=el('option',null,c.name); o.value=c.id; if(m.category===c.id) o.selected=true; catSel.appendChild(o);
+  });
+
+  var checksWrap=el('div','checks');
+  var boxes={};
+  var allLab=el('label','check');
+  var allBox=el('input'); allBox.type='checkbox';
+  allBox.checked = m.sections.length===SECTIONS.length;
+  allLab.appendChild(allBox); allLab.appendChild(document.createTextNode('All Sections'));
+  allBox.onchange=function(){
+    SECTIONS.forEach(function(s){ boxes[s.id].checked=allBox.checked; boxes[s.id].parentNode.classList.toggle('on', allBox.checked); });
+    allLab.classList.toggle('on', allBox.checked);
+  };
+  allLab.classList.toggle('on', allBox.checked);
+  checksWrap.appendChild(allLab);
+  SECTIONS.forEach(function(s){
+    var lab=el('label','check');
+    var cb=el('input'); cb.type='checkbox'; cb.checked = m.sections.indexOf(s.id)>-1;
+    lab.classList.toggle('on', cb.checked);
+    var d=el('span','secdot'); d.style.background=s.colour;
+    lab.appendChild(cb); lab.appendChild(d); lab.appendChild(document.createTextNode(s.name));
+    cb.onchange=function(){
+      lab.classList.toggle('on', cb.checked);
+      var all=SECTIONS.every(function(x){ return boxes[x.id].checked; });
+      allBox.checked=all; allLab.classList.toggle('on', all);
+    };
+    boxes[s.id]=cb; checksWrap.appendChild(lab);
+  });
+
+  b.appendChild(field('Event name *', fName));
+  var row1=el('div','two');
+  row1.appendChild(field('Start date *', fStart));
+  row1.appendChild(field('End date (leave blank for one day)', fEnd));
+  b.appendChild(row1);
+  var row2=el('div','two');
+  row2.appendChild(field('Type', catSel));
+  row2.appendChild(field('Time (optional)', fTime));
+  b.appendChild(row2);
+  b.appendChild(field('Sections', checksWrap));
+  b.appendChild(field('Location / venue', fLoc));
+  b.appendChild(field('Description', fDesc));
+  b.appendChild(field('Hosted by', fHost));
+  var row3=el('div','three');
+  row3.appendChild(field('Contact name', fCName));
+  row3.appendChild(field('Contact email', fCEmail));
+  row3.appendChild(field('Contact phone', fCPhone));
+  b.appendChild(row3);
+
+  var err=el('div','err','');
+  b.appendChild(err);
+
+  var foot=el('div','ctl-row'); foot.style.marginTop='6px';
+  var ok=el('button','btn', id ? 'Update event' : 'Add event');
+  ok.onclick=function(){
+    var name=fName.value.trim();
+    if(!name){ err.textContent='Give the event a name.'; return; }
+    if(!fStart.value){ err.textContent='Pick a start date.'; return; }
+    if(fEnd.value && fEnd.value < fStart.value){ err.textContent='The end date is before the start date.'; return; }
+    var secs=SECTIONS.filter(function(s){ return boxes[s.id].checked; }).map(function(s){ return s.id; });
+    if(!secs.length){ err.textContent='Choose at least one section.'; return; }
+    var out={
+      id: m.id, name:name, start:fStart.value, end:fEnd.value||'',
+      time:fTime.value.trim(), category:catSel.value, sections:secs,
+      description:fDesc.value.trim(), host:fHost.value.trim(), location:fLoc.value.trim(),
+      contactName:fCName.value.trim(), contactEmail:fCEmail.value.trim(), contactPhone:fCPhone.value.trim()
+    };
+    if(id){ admin.draft = admin.draft.map(function(x){ return x.id===id ? out : x; }); }
+    else { admin.draft = admin.draft.concat([out]); }
+    adminPanel();
+  };
+  var cancel=el('button','btn sec','Cancel');
+  cancel.onclick=function(){ adminPanel(); };
+  foot.appendChild(ok); foot.appendChild(cancel);
+  b.appendChild(foot);
+  setTimeout(function(){ fName.focus(); },60);
+}
+
+/* ---------------------------------------------------------------- wiring */
+$('prev').onclick=function(){ state.cursor=new Date(state.cursor.getFullYear(), state.cursor.getMonth()-1, 1); render(); };
+$('next').onclick=function(){ state.cursor=new Date(state.cursor.getFullYear(), state.cursor.getMonth()+1, 1); render(); };
+$('today').onclick=function(){ state.cursor=startOfMonth(new Date()); render(); };
+$('viewCal').onclick=function(){ state.view='cal'; render(); };
+$('viewTbl').onclick=function(){ state.view='tbl'; render(); };
+$('rangeUpcoming').onclick=function(){ state.range='upcoming'; render(); };
+$('rangeAll').onclick=function(){ state.range='all'; render(); };
+$('btnAdmin').onclick=openAdmin;
+$('evIcs').onclick=function(){
+  if(!currentEvent){ toast('Open a single event to add it'); return; }
+  download(currentEvent.name.replace(/[^a-z0-9]+/gi,'-').toLowerCase()+'.ics', buildICS([currentEvent]), 'text/calendar;charset=utf-8');
+};
+$('btnIcsAll').onclick=function(){
+  var list=visible().sort(sortByDate);
+  if(!list.length){ toast('Nothing to export'); return; }
+  download('clare-scout-county.ics', buildICS(list), 'text/calendar;charset=utf-8');
+};
+
+/* ---------------------------------------------------------------- boot */
+// If this month has nothing on, open on the next month that does.
+function jumpToFirstUpcoming(){
+  var cur=state.cursor, t=todayISO();
+  var thisMonth = state.events.some(function(ev){
+    return daysBetween(ev.start, ev.end).some(function(d){
+      var p=parseISO(d); return p.getMonth()===cur.getMonth() && p.getFullYear()===cur.getFullYear();
+    });
+  });
+  if(thisMonth) return;
+  var next = state.events.filter(function(ev){ return (ev.end||ev.start) >= t; }).sort(sortByDate)[0];
+  if(next) state.cursor = startOfMonth(parseISO(next.start));
+}
+
+function load(){
+  fetch(API, {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      state.events = (d.events||[]).map(normalise);
+      state.updatedAt = d.updatedAt || null;
+      jumpToFirstUpcoming();
+      render();
+    })
+    .catch(function(){
+      state.events=[]; state.apiDown=true; render();
+      toast('Could not load events');
+    });
+}
+buildControls();
+render();
+load();
+
+})();
+</script>
+</body>
+</html>
